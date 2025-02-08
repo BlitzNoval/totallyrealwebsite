@@ -18,7 +18,7 @@
 
     <!-- Main Content Container -->
     <div class="container">
-        <h1 id="valentineTitle"> Anez, my love... </h1>
+        <h1 id="valentineTitle"></h1>
         
         <!-- Music Player -->
         <div id="musicControls" class="music-controls">
@@ -31,35 +31,34 @@
 
         <!-- First Question -->
         <div class="question-section" id="question1">
-            <h2 id="question1Text"> Do you like me? </h2>
-            <button class="cute-btn" onclick="moveButton(this)" id="yesBtn1"> Yes </button>
-            <button class="cute-btn" onclick="moveButton(this)" id="noBtn1"> No </button>
+            <h2 id="question1Text"></h2>
+            <button class="cute-btn" onclick="moveButton(this)" id="yesBtn1"></button>
+            <button class="cute-btn" onclick="moveButton(this)" id="noBtn1"></button>
             <!-- CUSTOMIZE: Secret answer text -->
             <div class="secret-answer">
-                <button class="cute-btn special" onclick="showNextQuestion(2)" id="secretAnswerBtn"> I don't like you, I love you! 🐀 </button>
+                <button class="cute-btn special" onclick="showNextQuestion(2)" id="secretAnswerBtn"></button>
             </div>
         </div>
 
         <!-- Second Question (Love Meter) -->
         <div class="question-section hidden" id="question2">
-            <h2 id="question2Text"> How much do you think I love you? </h2>
+            <h2 id="question2Text"></h2>
             <!-- Love meter settings: min="0" max="10000" -->
             <div class="love-meter">
                 <input type="range" min="0" max="10000" value="100" class="slider" id="loveMeter">
                 <p>
-                    <span class="love-value-container"><span id="startText"> </span> (<span id="loveValue">100</span>%)</span>
+                    <span class="love-value-container"><span id="startText"></span> (<span id="loveValue">100</span>%)</span>
                     <span id="extraLove" class="hidden"></span>
                 </p>
             </div>
-            <button class="cute-btn" onclick="showNextQuestion(3)" id="nextBtn"> Next 🐀 </button>
+            <button class="cute-btn" onclick="showNextQuestion(3)" id="nextBtn"></button>
         </div>
 
         <!-- Final Question -->
         <div class="question-section hidden" id="question3">
-            <h2 id="question3Text">We both love each other right...</h2>
-            <h3 id="question3Text">So... Will you be my valentine?</h3>
-            <button class="cute-btn final-yes" onclick="celebrate()" id="yesBtn3"> Yes! </button>
-            <button class="cute-btn" onclick="moveButton(this)" id="noBtn3"> Duh! </button>
+            <h2 id="question3Text"></h2>
+            <button class="cute-btn final-yes" onclick="celebrate()" id="yesBtn3"></button>
+            <button class="cute-btn" onclick="moveButton(this)" id="noBtn3"></button>
         </div>
 
         <!-- CUSTOMIZE: Celebration message -->
