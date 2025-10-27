@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22nd Birthday - Anezworld</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;700&family=Inter:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="birthday-styles.css">
+</head>
+<body>
+    <!-- Intro Animation Overlay -->
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-content">
+            <p class="intro-text">Preparing something special...</p>
+            <div class="intro-spinner"></div>
+        </div>
+    </div>
+
+    <div class="birthday-container" id="birthdayContent">
+        <!-- Header -->
+        <header class="birthday-header">
+            <h1 class="birthday-title">Happy 22nd Birthday</h1>
+            <p class="birthday-subtitle">A special moment, just for you</p>
+        </header>
+
+        <!-- Video Frame -->
+        <div class="video-frame">
+            <div class="video-container">
+                <iframe
+                    id="birthdayVideo"
+                    src="https://player.cloudinary.com/embed/?cloud_name=dihgvlbta&public_id=Untitled_design_1_btambi&profile=cld-adaptive-stream"
+                    width="100%"
+                    height="100%"
+                    style="border: none; border-radius: 8px;"
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                    frameborder="0"
+                ></iframe>
+            </div>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="back-home">
+            <a href="index.html" id="homeLink" class="home-button">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Intro animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const introOverlay = document.getElementById('introOverlay');
+            const birthdayContent = document.getElementById('birthdayContent');
+
+            // Hide content initially
+            birthdayContent.style.opacity = '0';
+
+            // After 2 seconds, fade out intro and show content
+            setTimeout(() => {
+                introOverlay.classList.add('fade-out');
+
+                setTimeout(() => {
+                    introOverlay.style.display = 'none';
+                    birthdayContent.style.opacity = '1';
+                }, 600);
+            }, 2000);
+        });
+
+        // Set navigation flag when going home
+        document.getElementById('homeLink').addEventListener('click', function(e) {
+            sessionStorage.setItem('navigatedFromValentine', 'true');
+        });
+    </script>
+</body>
+</html>

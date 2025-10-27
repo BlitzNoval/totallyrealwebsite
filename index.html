@@ -3,75 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CUSTOMIZE: Browser tab title -->
-    <title>Will You Be My Valentine? 💝</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Styles -->
+    <title>Anezworld</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;700&family=Inter:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="home-styles.css">
 </head>
-<body>
-    <!-- Floating Background Elements -->
-    <div class="floating-elements">
-        <!-- Hearts and bears will be added here by JavaScript -->
+<body class="home-page">
+    <!-- Password Gate Overlay -->
+    <div id="passwordGate" class="password-gate">
+        <div class="password-container">
+            <h1 class="gate-title">Anezworld</h1>
+            <p class="gate-subtitle">A private collection of memories</p>
+
+            <div class="password-form">
+                <label for="passwordInput" class="password-label">What is the name of our future hedgehog?</label>
+                <input
+                    type="text"
+                    id="passwordInput"
+                    class="password-input"
+                    placeholder="Enter answer..."
+                    autocomplete="off"
+                >
+                <button id="submitPassword" class="password-btn">Enter</button>
+                <p id="errorMessage" class="error-message hidden">Incorrect answer. Try again.</p>
+
+                <!-- Success Message with Hedgehog -->
+                <div id="successMessage" class="success-message hidden">
+                    <p class="success-text">Correct!</p>
+                    <img src="https://i.pinimg.com/1200x/11/6f/44/116f44578d3ec4a713b5bb5bf912edd2.jpg" alt="Cheeks the Hedgehog" class="hedgehog-image">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Main Content Container -->
-    <div class="container"> 
-        <h1 id="valentineTitle"></h1>
-        
-        <!-- Music Player -->
-        <div id="musicControls" class="music-controls">
-            <button id="musicToggle" class="music-btn">🎵 Play Music</button>
-            <audio id="bgMusic" loop>
-                <source id="musicSource" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+    <!-- Main Content (Hidden until password is correct) -->
+    <div id="mainContent" class="main-content hidden">
+        <div class="home-container">
+            <!-- Hero Section -->
+            <header class="hero-section">
+                <h1 class="hero-title">Anezworld</h1>
+                <p class="hero-subtitle">A little world built around you, just for us</p>
+            </header>
+
+            <!-- Archive Section -->
+            <section class="archive-section">
+                <div class="archive-header">
+                    <h2 class="section-heading">Archive</h2>
+                    <div class="sort-controls">
+                        <label for="sortSelect" class="sort-label">Sort by:</label>
+                        <select id="sortSelect" class="sort-dropdown">
+                            <option value="date-desc">Latest First</option>
+                            <option value="date-asc" selected>Earliest First</option>
+                            <option value="occasion">Occasion</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="archiveGrid" class="archive-grid">
+                    <!-- Collections will be rendered here by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Music Player Dropdown -->
+    <div id="musicControls" class="music-controls">
+        <button id="musicToggle" class="music-toggle-btn">
+            <img src="https://cdn-icons-png.flaticon.com/512/500/500148.png" alt="Music" class="music-icon">
+            Playlist
+            <span class="dropdown-arrow">▼</span>
+        </button>
+        <div id="playlistDropdown" class="playlist-dropdown hidden">
+            <ul id="playlist" class="playlist">
+                <li class="song" data-src="https://res.cloudinary.com/dihgvlbta/video/upload/v1761520217/Instant_Crush_feat._Julian_Casablancas_jx9gsz.mp3" data-duration="5:37">
+                    <span class="song-number">1</span>
+                    <div class="song-info">
+                        <span class="song-title">Instant Crush (feat. Julian Casablancas)</span>
+                        <span class="song-duration">5:37</span>
+                    </div>
+                    <button class="play-btn">
+                        <svg class="play-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                        </svg>
+                    </button>
+                </li>
+                <li class="song" data-src="https://res.cloudinary.com/dihgvlbta/video/upload/v1761528093/Ricky_Montgomery_-_Mr_Loverman_Official_Lyric_Video_bmpywr.mp3" data-duration="3:14">
+                    <span class="song-number">2</span>
+                    <div class="song-info">
+                        <span class="song-title">Mr Loverman - Ricky Montgomery</span>
+                        <span class="song-duration">3:14</span>
+                    </div>
+                    <button class="play-btn">
+                        <svg class="play-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                        </svg>
+                    </button>
+                </li>
+                <li class="song" data-src="https://res.cloudinary.com/dihgvlbta/video/upload/v1761528092/We_Could_Be_Together_dvch3k.mp3" data-duration="3:48">
+                    <span class="song-number">3</span>
+                    <div class="song-info">
+                        <span class="song-title">We Could Be Together</span>
+                        <span class="song-duration">3:48</span>
+                    </div>
+                    <button class="play-btn">
+                        <svg class="play-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24" width="20" height="20">
+                            <path fill="currentColor" d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Music Controls in Dropdown -->
+            <div class="dropdown-controls">
+                <div class="volume-control">
+                    <svg class="volume-icon" viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                    </svg>
+                    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="50">
+                </div>
+                <button id="prevBtnDropdown" class="control-btn-dropdown">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                    </svg>
+                </button>
+                <button id="playPauseBtnDropdown" class="control-btn-dropdown main-play-btn-dropdown">
+                    <svg class="play-icon-dropdown" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg class="pause-icon-dropdown" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                    </svg>
+                </button>
+                <button id="nextBtnDropdown" class="control-btn-dropdown">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Background Music -->
+    <audio id="bgMusic" crossorigin="anonymous" preload="auto"></audio>
+
+    <!-- Easter Egg Doodles -->
+    <div class="easter-eggs">
+        <!-- Flower Doodle - Left Top -->
+        <div class="doodle flower-doodle" id="flowerDoodle">
+            <img src="https://cdn-icons-png.flaticon.com/512/26/26284.png" alt="Flower" class="doodle-icon">
         </div>
 
-        <!-- First Question -->
-        <div class="question-section" id="question1">
-            <h2 id="question1Text"></h2>
-            <button class="cute-btn" onclick="moveButton(this)" id="yesBtn1"></button>
-            <button class="cute-btn" onclick="moveButton(this)" id="noBtn1"></button>
-            <!-- CUSTOMIZE: Secret answer text -->
-            <div class="secret-answer">
-                <button class="cute-btn special" onclick="showNextQuestion(2)" id="secretAnswerBtn"></button>
+        <!-- Star Doodle - Left Bottom -->
+        <div class="doodle star-doodle" id="starDoodle">
+            <img src="https://cdn-icons-png.flaticon.com/512/16/16967.png" alt="Star" class="doodle-icon">
+            <div class="star-message hidden" id="starMessage">
+                <p class="star-text">To the brightest <a href="https://www.staracle.com/staracle/staracle.php?Tycho=10004393734" target="_blank" class="star-link">star</a> in my universe </p>
             </div>
         </div>
 
-        <!-- Second Question (Love Meter) -->
-        <div class="question-section hidden" id="question2">
-            <h2 id="question2Text"></h2>
-            <!-- Love meter settings: min="0" max="10000" -->
-            <div class="love-meter">
-                <input type="range" min="0" max="10000" value="100" class="slider" id="loveMeter">
-                <p>
-                    <span class="love-value-container"><span id="startText"></span> (<span id="loveValue">100</span>%)</span>
-                    <span id="extraLove" class="hidden"></span>
-                </p>
-            </div>
-            <button class="cute-btn" onclick="showNextQuestion(3)" id="nextBtn"></button>
-        </div>
-
-        <!-- Final Question -->
-        <div class="question-section hidden" id="question3">
-            <h2 id="question3Text"></h2>
-            <button class="cute-btn final-yes" onclick="celebrate()" id="yesBtn3"></button>
-            <button class="cute-btn" onclick="moveButton(this)" id="noBtn3"></button>
-        </div>
-
-        <!-- CUSTOMIZE: Celebration message -->
-        <div class="celebration hidden" id="celebration">
-            <h2 id="celebrationTitle"></h2>
-            <p class="celebration-text" id="celebrationMessage"></p>
-            <p class="celebration-text" id="celebrationEmojis"></p>
+        <!-- Valentine Doodle - Right -->
+        <div class="doodle valentine-doodle" id="valentineDoodle">
+            <img src="https://cdn-icons-png.flaticon.com/512/12123/12123608.png" alt="Valentine" class="doodle-icon">
         </div>
     </div>
+
+    <!-- Audio for valentine sound bite -->
+    <audio id="valentineAudio" preload="auto">
+        <source src="Soundbit.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- Scripts -->
-    <script src="config.js"></script>
-    <script src="theme.js"></script>
-    <script src="script.js"></script>
+    <script src="data.js"></script>
+    <script src="home.js"></script>
 </body>
-</html> 
+</html>
